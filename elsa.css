@@ -1,0 +1,123 @@
+#headerdiv{
+	position: absolute;
+	width: 100%;
+	height: 14%;
+	left: ;
+	top: 0px;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 20px rgba(12, 36, 64, 0.1);
+	border-radius: 10%;
+}
+
+#logo{
+	position: absolute;
+left: 43.68%;
+right: 43.68%;
+top: 0;
+bottom: 96.98%;
+height: 100%;
+}
+
+#phonediv{
+	position: absolute;
+	width: 100%;
+	height: 60%;
+	left:;
+	top: 15%;
+	display: block;
+	background: #FFFFFF;
+
+	background-image: url("phone.png");
+	background-size: cover;
+	z-index: -99;
+}
+
+#phonetextdiv{
+	position: absolute;
+	width: 50%;
+	height: 65%;
+	left: 11.4%;
+	top: 16.5%;
+	text-align: center;
+}
+
+#appluyenoitienganh{
+	position: absolute;
+
+font-family: BrownVN;
+font-style: normal;
+font-weight: bold;
+font-size: 2.8vw;
+line-height: 100%;
+display: block;
+color: #0C2440;
+}
+
+#voielsaspeak{
+	position: absolute;
+width: 70%;
+height: 15%;
+top: 50%;
+left: 15%;
+font-family: BrownVN;
+font-style: normal;
+font-weight: 300;
+font-size: 1.3vw;
+line-height: 10%;
+display: block;
+
+color: #06BAE8;
+}
+
+#firstbutton{
+	position: absolute;
+width: 30%;
+height: 20%;
+right: 30%;
+top: 75%;
+
+background: linear-gradient(80.25deg, #3DFFC8 1.31%, #40F6CF 15.32%, #49DCE1 38.61%, #57B3FF 68.19%);
+box-shadow: 0px 4px 8px rgba(46, 153, 241, 0.5);
+border-radius: 20px;
+}
+
+#dangkyngay{
+	position: absolute;
+width: 100%;
+height: 42px;
+top: 14%;
+right: 3%;
+font-family: BrownVN;
+font-style: normal;
+font-weight: bold;
+font-size: 2vw;
+line-height: 2vw;
+text-align: center;
+
+color: #FFFFFF;
+}
+
+#phonediv2{
+	position: absolute;
+	width: 100%;
+	height: 112%;
+	left: 0px;
+	top: 80%;
+
+	background: #FFFFFF;
+
+	background-image: url("phone2.png");
+	background-size: cover;
+	z-index: -99;
+}
+
+#phone2{
+	position: absolute;
+width: 1139px;
+height: 713px;
+left: 496px;
+top: 622px;
+
+background: url("phone2.png");
+filter: drop-shadow(0px 8px 10px rgba(255, 254, 254, 0.1));
+}
