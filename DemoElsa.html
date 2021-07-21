@@ -32,10 +32,11 @@
 					</div>
 				</div>
 				<div class="row">
-					<form style="background-color: white;box-shadow: 5px 5px 8px rgba(12, 36, 64, 0.3); border-radius: 0px 0px 15px 15px; " id="form">
+					<form style="background-color: white;box-shadow: 5px 5px 8px rgba(12, 36, 64, 0.3); border-radius: 0px 0px 15px 15px; " id="form" action="ok.html" method="post">
 						<div class="form-group">
 							<label class="form-label formtext"><i class="far fa-user"></i> Họ và tên</label>
-							<input class="col-md-10 form-control" type="text" name="name">
+							<input class="col-md-10 form-control" type="text" name="name" id="txtname">
+							<div id="nameerror" class="text-danger" hidden="true">Please fill in this field!</div>
 						</div>
 						<div class="form-group">
 							<label class="form-label formtext"><i class="fas fa-phone-alt"></i> Số điện thoại</label>
@@ -58,8 +59,9 @@
 							  <label class="form-check-label radiotext" for="flexRadioDefault2">
 							    Gói trọn đời
 							  </label>
+							  <div id="radioerror" class="text-danger" hidden="true">Invalid!</div>
 							  <div id="coursefee">
-							  	
+							
 							  </div>
 						</div>
 						<div class="form-group" style="padding-bottom: 5%; margin-top: 2%; text-align: center;">
@@ -69,6 +71,10 @@
 				</div>
 			</div>	
 		</div>
+
+		<div class="row" id="phone3">
+			
+		</div>
 	</div>
 	
 	<script src="js/bootstrap.js"></script>
@@ -76,11 +82,15 @@
 		function goi1namfee(){
 			let fee = document.getElementById("coursefee");			
 				fee.textContent = "Gói 1 năm: 989.000 VND";
+			let radio = document.getElementById("radioerror");
+			radio.hidden = true;
 		}
 
 		function goitrondoifee(){
 			let fee = document.getElementById("coursefee");			
 				fee.textContent = "Gói trọn đời: 1.995.000 VND";
+				let radio = document.getElementById("radioerror");
+			radio.hidden = true;
 		}
 
 		function validation(){
@@ -89,7 +99,17 @@
 			let form = document.getElementById("form");
 			let txtemail = document.getElementById("txtemail");
 			let emailerror = document.getElementById("emailerror");
-			if (!phonenumber(txtphonenumber) || !validateEmail(txtemail.value)) {
+			let txtname = document.getElementById("txtname");
+			let nameerror = document.getElementById("nameerror");
+			let radio1 = document.getElementById("flexRadioDefault1");
+			let radio2 = document.getElementById("flexRadioDefault2");
+			let radioerror = document.getElementById("radioerror");
+			if (!phonenumber(txtphonenumber) || !validateEmail(txtemail.value) || txtname.value==="" || (radio1.checked == false && radio2.checked == false)) {
+				if(txtname.value===""){
+					nameerror.hidden = false;
+				}else{
+					nameerror.hidden = true;
+				}
 				if(!phonenumber(txtphonenumber)){
 					phonenumbererror.hidden = false;
 				}else{
@@ -100,6 +120,12 @@
 				}else{
 					emailerror.hidden = true;
 				}
+				if ((radio1.checked == false && radio2.checked == false)) {
+					radioerror.hidden = false;
+				}else{
+					radioerror.hidden = true;
+				}
+				debugger;
 				return;
 			}
 			form.submit();
