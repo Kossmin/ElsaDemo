@@ -4,23 +4,129 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<title>Elsa Speak</title>
 	<link rel="stylesheet" type="text/css" href="elsa.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <script src="https://kit.fontawesome.com/f58c939b44.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<header>
-		<div id="headerdiv" class="mx-auto"><img src="elsa.png" id="logo"></div>
 		
-	</header>
-	<div id="phonediv">
-		<div class="my-auto" id="phonetextdiv">
-			<span id="appluyenoitienganh">APP LUYỆN NÓI<br>& GIAO TIẾP TIẾNG ANH THỜI 4.0</span>
-			<span class="text-center" id="voielsaspeak">Với ELSA Speak - Ai Cũng Có Thể Nói Tiếng Anh Hay!</span>
-			<a class="btn" id="firstbutton"><span id="dangkyngay">Đăng ký ngay</span></a>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="container-fluid text-center" id="headerdiv" ><img src="elsa.png" id="logo"></div>
 		</div>
-	</div>
-	<div id="phonediv2">
-		
+		<div class="row">
+			<div class="container-fluid" id="phonediv">
+				<div class="col-md-6 text-center" id="phonetextdiv">
+						<p class="m-auto col-md-12" id="appluyenoitienganh">APP LUYỆN NÓI<br>& GIAO TIẾP TIẾNG ANH THỜI 4.0</p>	
+						<p class="mt-3 col-md-12" id="voielsaspeak">Với ELSA Speak - Ai Cũng Có Thể Nói Tiếng Anh Hay!</p>	
+						<a href="#header-form-fiv" class="btn col-4 mt-2 ml-3" id="firstbutton"><span id="dangkyngay">Đăng ký ngay</span></a>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid" id="phonediv2">
+			<div class="col-lg-4" style="position: absolute;top: 15%; left: 8%;">
+				<div class="row">
+					<div id="header-form-fiv">
+						<p id="cungungdung">
+						CÙNG ỨNG DỤNG ELSA<br>NÓI TIẾNG ANH “THẢ GA”
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<form style="background-color: white;box-shadow: 5px 5px 8px rgba(12, 36, 64, 0.3); border-radius: 0px 0px 15px 15px; " id="form">
+						<div class="form-group">
+							<label class="form-label formtext"><i class="far fa-user"></i> Họ và tên</label>
+							<input class="col-md-10 form-control" type="text" name="name">
+						</div>
+						<div class="form-group">
+							<label class="form-label formtext"><i class="fas fa-phone-alt"></i> Số điện thoại</label>
+							<input class="col-md-10 form-control" type="text" name="phonenumber" id="txtphonenumber">
+							<div id="phonenumbererror" class="text-danger" hidden="true">Invalid!</div>
+						</div>
+						<div class="form-group">
+							<label class="form-label formtext"><i class="far fa-envelope"></i> Email</label>
+							<input class="col-md-10 form-control" type="email" name="email" id="txtemail">
+							<div id="emailerror" class="text-danger" hidden="true">Invalid!</div>
+						</div>
+						<div class="form-group" style=" margin-top: 3%">
+							<input class="form-check-input" type="radio" name="flexRadioDefault" onclick="if(this.checked){goi1namfee()}" id="flexRadioDefault1">
+							  <label class="form-check-label radiotext" for="flexRadioDefault1" style="margin-right:10%">
+							    Gói học 1 năm
+							  </label>
+
+
+							  <input class="form-check-input" type="radio" name="flexRadioDefault" onclick="if(this.checked){goitrondoifee()}" id="flexRadioDefault2">
+							  <label class="form-check-label radiotext" for="flexRadioDefault2">
+							    Gói trọn đời
+							  </label>
+							  <div id="coursefee">
+							  	
+							  </div>
+						</div>
+						<div class="form-group" style="padding-bottom: 5%; margin-top: 2%; text-align: center;">
+							<button type="button" onclick ="validation()"  id="registerbutton" class="btn col-12"><span id="registertext">Đăng ký ngay</span></button>
+						</div>
+					</form>
+				</div>
+			</div>	
+		</div>
 	</div>
 	
 	<script src="js/bootstrap.js"></script>
+	<script type="text/javascript">
+		function goi1namfee(){
+			let fee = document.getElementById("coursefee");			
+				fee.textContent = "Gói 1 năm: 989.000 VND";
+		}
+
+		function goitrondoifee(){
+			let fee = document.getElementById("coursefee");			
+				fee.textContent = "Gói trọn đời: 1.995.000 VND";
+		}
+
+		function validation(){
+			let phonenumbererror = document.getElementById("phonenumbererror");
+			let txtphonenumber = document.getElementById("txtphonenumber");
+			let form = document.getElementById("form");
+			let txtemail = document.getElementById("txtemail");
+			let emailerror = document.getElementById("emailerror");
+			if (!phonenumber(txtphonenumber) || !validateEmail(txtemail.value)) {
+				if(!phonenumber(txtphonenumber)){
+					phonenumbererror.hidden = false;
+				}else{
+					phonenumbererror.hidden = true;
+				}
+				if(!validateEmail(txtemail.value)){
+					emailerror.hidden = false;
+				}else{
+					emailerror.hidden = true;
+				}
+				return;
+			}
+			form.submit();
+		}
+
+		function phonenumber(inputtxt)
+		{
+		  var phoneno = /^\d{10}$/;
+		  if(inputtxt.value.match(phoneno))
+		        {
+		      return true;
+		        }
+		      else
+		        {
+		        return false;
+		        }
+		}
+
+		function validateEmail (emailAdress)
+		{
+		  let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+		  if (emailAdress.match(regexEmail)) {
+		    return true; 
+		  } else {
+		    return false; 
+		  }
+		}
+	</script>
 </body>
 </html>
